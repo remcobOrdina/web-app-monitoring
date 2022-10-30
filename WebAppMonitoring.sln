@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMontoring.Api", "WebAppMontoring.Api\WebAppMontoring.Api.csproj", "{2890995D-96B0-4258-8FE6-D15D6DBF2862}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMonitoring.Api", "WebAppMonitoring.Api\WebAppMonitoring.Api.csproj", "{2890995D-96B0-4258-8FE6-D15D6DBF2862}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{A80B58B4-9E9F-4379-B185-5AFD748F6CB3}"
 	ProjectSection(SolutionItems) = preProject
