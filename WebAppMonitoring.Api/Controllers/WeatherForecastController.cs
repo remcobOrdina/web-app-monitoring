@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAppMontoring.Api.Controllers;
@@ -12,10 +13,12 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly BlobServiceClient _blobServiceClient;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, BlobServiceClient blobServiceClient)
     {
         _logger = logger;
+        _blobServiceClient = blobServiceClient;
     }
 
     [HttpGet]
@@ -41,5 +44,18 @@ public class WeatherForecastController : ControllerBase
         {
             new WeatherForecast { Date = DateTime.Now, TemperatureC = 15, Summary = "Slecht weer"}
         };
+    }
+    
+    [HttpGet]
+    [Route("/news")]
+    public string? GetNews()
+    {
+        var containerClient = _blobServiceClient.GetBlobContainerClient("news");
+        var blobClient = containerClient.GetBlobClient("news.txt");
+
+        var newsFile = blobClient.DownloadContent();
+        var content = newsFile.Value.Content;
+
+        return content.ToString();
     }
 }

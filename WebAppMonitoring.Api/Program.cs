@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Azure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationInsightsTelemetry();
+
+builder.Services.AddAzureClients(clientBuilder =>
+{
+    clientBuilder.AddBlobServiceClient(builder.Configuration["Storage:ConnectionString"]);
+});
 
 var app = builder.Build();
 
