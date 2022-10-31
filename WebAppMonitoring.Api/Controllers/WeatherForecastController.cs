@@ -38,8 +38,6 @@ public class WeatherForecastController : ControllerBase
     [Route("/Failing")]
     public IEnumerable<WeatherForecast> GetFailingWeatherForecast()
     {
-        throw new InvalidOperationException("This endpoints throws a exception to show logging");
-
         return new[]
         {
             new WeatherForecast { Date = DateTime.Now, TemperatureC = 15, Summary = "Slecht weer"}
